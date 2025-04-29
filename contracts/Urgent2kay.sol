@@ -8,7 +8,7 @@ contract Urgent2kay is ERC20, Ownable {
 
     uint256 public constant REWARD_AMOUNT = 100 * 10 ** 18;
 
-     constructor() ERC20("Urgent2kay", "2tk") {}
+     constructor() ERC20("Urgent2kay", "U2k") {}
 
      function mint(address to, uint256 amount)external onlyOwner {
         _mint(to, amount);
