@@ -22,16 +22,21 @@ contract U2KSystemFactory {
      * @return deployedPaymentSystem Address of the deployed payment system contract
      */
     function deploySystem() external returns (address deployedToken, address deployedPaymentSystem) {
+        address deployer = msg.sender;
+        
         // Deploy the U2K token contract
-        u2kToken = new U2KToken(msg.sender);
+        u2kToken = new U2KToken(address(this));
         
         // Deploy the bill payment system
-        billPaymentSystem = new BillPaymentSystem(address(u2kToken));
+        billPaymentSystem = new BillPaymentSystem(address(u2kToken), deployer);
         
         // Set the bill payment contract address in the token contract
         u2kToken.setBillPaymentContract(address(billPaymentSystem));
         
-        emit SystemDeployed(address(u2kToken), address(billPaymentSystem), msg.sender);
+        // Transfer ownership of token to the original deployer
+        u2kToken.transferOwnership(deployer);
+        
+        emit SystemDeployed(address(u2kToken), address(billPaymentSystem), deployer);
         
         return (address(u2kToken), address(billPaymentSystem));
     }

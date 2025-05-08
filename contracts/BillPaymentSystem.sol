@@ -53,11 +53,12 @@ contract BillPaymentSystem is Ownable, ReentrancyGuard {
     /**
      * @dev Constructor
      * @param _u2kToken Address of the U2K token contract
+     * @param _owner Address that will own this contract
      */
-    constructor(address _u2kToken) {
+    constructor(address _u2kToken, address _owner) {
         u2kToken = U2KToken(_u2kToken);
         billCounter = 1;
-        _transferOwnership(msg.sender);
+        _transferOwnership(_owner);
     }
     
     /**
