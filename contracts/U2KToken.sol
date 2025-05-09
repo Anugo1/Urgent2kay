@@ -25,7 +25,7 @@ contract U2KToken is ERC20, Ownable {
      * @dev Constructor that mints the initial supply of tokens
      * @param initialOwner The address that will own the contract and initial token supply
      */
-    constructor(address initialOwner) ERC20("U2K Token", "U2K") {
+    constructor(address initialOwner) ERC20("Urgent2K", "U2K") {
         _mint(address(this), REWARDS_ALLOCATION); // 70% for rewards (held by contract)
         _mint(initialOwner, TOTAL_SUPPLY - REWARDS_ALLOCATION); // 30% to owner
         _transferOwnership(initialOwner);

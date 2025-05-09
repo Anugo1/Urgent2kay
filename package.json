@@ -5,17 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "hardhat test",
-    "compile": "hardhat compile"
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:base-sepolia": "hardhat run scripts/deploy.js --network base_sepolia",
+    "verify": "hardhat run scripts/verify-contracts.js",
+    "copy-artifacts": "node scripts/copy-artifacts.js",
+    "update-abis": "node scripts/update-abis.js",
+    "build:web3": "npm run compile && npm run copy-artifacts && npm run update-abis",
+    "start:backend": "node scripts/start-backend.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
     "dotenv": "^16.5.0",
+    "ethers": "^6.10.0",
     "hardhat": "^2.19.4"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "hardhat": "^2.19.4"
   }
 }
